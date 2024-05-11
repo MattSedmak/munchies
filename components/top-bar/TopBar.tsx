@@ -22,14 +22,14 @@ export const TopBar = ({ filters }: TopBarProps) => {
   };
 
   return (
-    <div className='col-start-1 md:col-start-4 col-span-full row-span-1 mb-10 gap-2.5 overflow-visible'>
+    <div className='col-start-1 col-span-full mb-6 md:mb-10 overflow-visible'>
       <div className='flex gap-2.5 overflow-x-auto overflow-y-clip'>
         {filters.map((cat) => (
           <button
             key={cat.id}
             data-active={selectedFilters.filter_ids.includes(cat.id)}
             className={
-              'flex bg-white min-w-[160px] h-20 px-3 py-4 rounded-lg border border-black/10 text-title relative data-[active=true]:border-brand-green'
+              'flex bg-white min-w-[160px] h-20 px-3 py-4 rounded-lg border border-stroke text-title relative data-[active=true]:border-brand-green shadow-card'
             }
             onClick={() => handleSelectedFilters(cat.id)}
           >

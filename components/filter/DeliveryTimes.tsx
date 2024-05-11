@@ -1,9 +1,9 @@
 'use client';
-import { Restaurants } from '@/schemas/schemas';
+import { Restaurant, Restaurants } from '@/schemas/schemas';
 import React from 'react';
 
 interface DeliveryTimesProps {
-  restaurants: Restaurants;
+  restaurants: Restaurant[];
 }
 
 export const DeliveryTimes = ({ restaurants }: DeliveryTimesProps) => {
@@ -14,7 +14,6 @@ export const DeliveryTimes = ({ restaurants }: DeliveryTimesProps) => {
     { name: '60+', value: { min: 60, max: Infinity } },
   ];
 
-  console.log(mappedDeliveryTimes);
   return (
     <div className='flex flex-col gap-4'>
       <h4 className='text-body uppercase text-black/40 font-semibold'>

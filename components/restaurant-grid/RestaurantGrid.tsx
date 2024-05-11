@@ -36,10 +36,17 @@ export const RestaurantGrid = ({ restaurants }: RestaurantGridProps) => {
   );
 
   return (
-    <div className='grid grid-cols-subgrid col-start-1 col-span-full md:col-start-4 md:col-span-12 row-span-1 gap-y-4'>
-      {filteredRestaurants.map((restaurant) => (
-        <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-      ))}
+    <div className='col-start-1 col-span-12 '>
+      <h1 className='mb-5 md:mb-8 text-heading-sm md:text-display'>Restaurants</h1>
+      <div className='grid grid-cols-12 gap-4'>
+        {filteredRestaurants.map((restaurant) => (
+          <RestaurantCard
+            key={restaurant.id}
+            restaurant={restaurant}
+            isOpen={restaurant.open_status.is_open}
+          />
+        ))}
+      </div>
     </div>
   );
 };

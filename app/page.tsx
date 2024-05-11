@@ -1,29 +1,12 @@
 import { Header } from '@/components/header/Header';
-import { Filters, PriceRange, Restaurants } from '@/schemas/schemas';
 import { TopBar } from '@/components/top-bar/TopBar';
 import { FoodCategories } from '@/components/filter/FoodCatrgories';
 import { RestaurantGrid } from '@/components/restaurant-grid/RestaurantGrid';
-import { fetchData } from '@/utilis/fetchData';
 import { PriceRanges } from '@/components/filter/PriceRanges';
 import { DeliveryTimes } from '@/components/filter/DeliveryTimes';
-
-async function getRestaurants(): Promise<Restaurants> {
-  return fetchData<Restaurants>(
-    'https://work-test-web-2024-eze6j4scpq-lz.a.run.app/api/restaurants'
-  );
-}
-
-async function getFilters(): Promise<Filters> {
-  return fetchData<Filters>(
-    'https://work-test-web-2024-eze6j4scpq-lz.a.run.app/api/filter'
-  );
-}
-
-async function getPriceRanges(): Promise<PriceRange[]> {
-  return fetchData<PriceRange[]>(
-    'https://work-test-web-2024-eze6j4scpq-lz.a.run.app/api/price-range'
-  );
-}
+import { getRestaurants } from '@/services/restaurantService';
+import { getFilters } from '@/services/filterService';
+import { getPriceRanges } from '@/services/priceRangeService';
 
 export default async function Home() {
   const restaurantsData = await getRestaurants();
@@ -36,23 +19,23 @@ export default async function Home() {
     priceRangesData,
   ]);
 
-  const deliveryTimes = Array.from(
-    new Set(restaurants.restaurants.map((rest) => rest.delivery_time_minutes))
-  );
-  console.log(deliveryTimes);
-
   return (
-    <main className='flex mx-auto max-w-[1440px] flex-col px-6 md:px-10 border border-red-400 overflow-hidden'>
+    <main className='flex mx-auto max-w-[1440px] flex-col px-6 lg:px-10 overflow-hidden'>
       <Header />
       <section className='grid grid-cols-4 md:grid-cols-16 gap-x-5'>
-        <aside className='col-start-1 col-span-3 row-span-2 bg-white p-6 rounded-[10px] hidden md:flex md:flex-col md:gap-8'>
+        <aside className='col-start-1 col-span-3 row-span-2 bg-white p-6 rounded-[10px] hidden md:flex md:flex-col md:gap-8 shadow-card border border-stroke'>
           <h3 className='text-heading'>Filter</h3>
           <FoodCategories filters={categories.filters} />
-          <PriceRanges prices={priceRages} />
           <DeliveryTimes restaurants={restaurants} />
+          <PriceRanges prices={priceRages} />
         </aside>
-        <TopBar filters={categories.filters} />
-        <RestaurantGrid restaurants={restaurants.restaurants} />
+        <div className='block md:hidden col-start-1 col-span-full mb-6'>
+          <PriceRanges prices={priceRages} />
+        </div>
+        <div className='grid grid-cols-subgrid col-span-4 md:col-span-13'>
+          <TopBar filters={categories.filters} />
+          <RestaurantGrid restaurants={restaurants} />
+        </div>
       </section>
     </main>
   );

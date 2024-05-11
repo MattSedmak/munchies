@@ -16,7 +16,7 @@ export const FilterButton = ({
   return (
     <button
       data-active={isActive}
-      className='px-3 py-2 border border-black/10 text-body w-fit rounded-lg data-[active=true]:border-brand-green'
+      className='px-3 py-2 border border-stroke bg-white text-body w-fit rounded-lg data-[active=true]:border-brand-green'
       onClick={() => handleClick(filterId)}
     >
       {label}

@@ -8,6 +8,11 @@ export interface Filters {
   filters: Filter[];
 }
 
+export interface OpenStatus {
+  id: string;
+  is_open: boolean;
+}
+
 export interface Restaurant {
   id: string;
   name: string;
@@ -16,6 +21,7 @@ export interface Restaurant {
   image_url: string;
   delivery_time_minutes: number;
   price_range_id: string;
+  open_status: OpenStatus;
 }
 
 export interface Restaurants {
