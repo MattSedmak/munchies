@@ -12,13 +12,13 @@ interface RestaurantCardProps {
 
 export const RestaurantCard = ({ restaurant, isOpen }: RestaurantCardProps) => {
   return (
-    <div className='relative flex flex-col justify-between col-span-full sm:col-span-6 xl:col-span-4 border border-stroke bg-white rounded-lg p-4 text-heading min-h-[200px] overflow-hidden shadow-card'>
+    <div className='relative flex flex-col justify-between col-span-full sm:col-span-6 xl:col-span-4 border border-stroke bg-white rounded-lg p-4 text-heading aspect-[327/202] overflow-hidden shadow-card'>
       <Image
         src={restaurant.image_url}
         alt={restaurant.name}
         width={140}
         height={140}
-        quality={100}
+        priority={true}
         className={`absolute -top-8 -right-6 aspect-square object-contain ${
           !isOpen ? 'opacity-10' : 'opacity-100'
         }`}
@@ -28,7 +28,7 @@ export const RestaurantCard = ({ restaurant, isOpen }: RestaurantCardProps) => {
           label={isOpen ? 'open' : 'closed'}
           circle={{ show: true, color: isOpen ? 'green' : 'black' }}
         />
-        {isOpen && <Badge label='10 min' circle={{ show: false }} />}
+        {/* {isOpen && <Badge label='10 min' circle={{ show: false }} />} */}
       </div>
       {!isOpen && (
         <p className='w-fit border border-stroke text-body bg-off-white rounded py-2 px-3 self-center'>

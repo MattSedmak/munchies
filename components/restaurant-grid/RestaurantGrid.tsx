@@ -13,21 +13,28 @@ export const RestaurantGrid = ({ restaurants }: RestaurantGridProps) => {
 
   // Check if a restaurant matches the selected filters
   const restaurantMatchesFilters = (restaurant: Restaurant) => {
+    const { filter_ids, price_range_id, delivery_time_minutes } = selectedFilters;
     // If no filters are selected, all restaurants match
     if (
-      selectedFilters.filter_ids.length === 0 &&
-      selectedFilters.price_range_id === null
+      filter_ids.length === 0 &&
+      price_range_id === null &&
+      delivery_time_minutes === null
     )
       return true;
 
-    return (
-      (selectedFilters.filter_ids.length === 0 ||
-        restaurant.filter_ids.some((id) =>
-          selectedFilters.filter_ids.includes(id)
-        )) &&
-      (selectedFilters.price_range_id === null ||
-        selectedFilters.price_range_id === restaurant.price_range_id)
-    );
+    const filterIdsMatch =
+      filter_ids.length === 0 ||
+      restaurant.filter_ids.some((id) => filter_ids.includes(id));
+
+    const priceRangeMatch =
+      price_range_id === null || restaurant.price_range_id === price_range_id;
+
+    const deliveryTimeMatch =
+      delivery_time_minutes === null ||
+      (restaurant.delivery_time_minutes >= delivery_time_minutes.min &&
+        restaurant.delivery_time_minutes <= delivery_time_minutes.max);
+
+    return filterIdsMatch && priceRangeMatch && deliveryTimeMatch;
   };
 
   // Filter restaurants based on selected filters

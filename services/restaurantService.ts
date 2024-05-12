@@ -29,7 +29,7 @@ export const getRestaurants = async (): Promise<Restaurant[]> => {
 
     return restaurantsWithOpenStatus;
   } catch (error) {
-    console.error('Error fetching restaurants with open status:', error);
-    throw error;
+    console.error('Error fetching restaurants:', error);
+    return [];
   }
 };

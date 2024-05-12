@@ -1,16 +1,22 @@
 'use client';
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 
+type DeliveryTimeMinutes = {
+  min: number;
+  max: number;
+} | null;
+
 interface SelectedFilters {
   filter_ids: string[];
   price_range_id: string | null;
+  delivery_time_minutes: DeliveryTimeMinutes;
 }
 
-// Define types/interfaces
 interface FilterContextType {
   selectedFilters: {
     filter_ids: string[];
     price_range_id: string | null;
+    delivery_time_minutes: DeliveryTimeMinutes;
   };
   setSelectedFilters: React.Dispatch<React.SetStateAction<SelectedFilters>>;
 }
@@ -24,6 +30,7 @@ const initialFilterContext: FilterContextType = {
   selectedFilters: {
     filter_ids: [],
     price_range_id: null,
+    delivery_time_minutes: null,
   },
   setSelectedFilters: () => {}, // Initial setter function
 };
@@ -37,6 +44,7 @@ export const FilterProvider = ({ children }: FilterProviderProps) => {
   const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({
     filter_ids: [],
     price_range_id: null,
+    delivery_time_minutes: null,
   });
 
   return (

@@ -1,34 +1,47 @@
 'use client';
-import { Restaurant, Restaurants } from '@/schemas/schemas';
 import React from 'react';
+import { FilterButton } from '../filter-button/FilterButton';
+import { useFilterContext } from '@/Providers/FiltersProvider';
 
-interface DeliveryTimesProps {
-  restaurants: Restaurant[];
-}
+const DELIVERY_TIMES = [
+  { label: '0-10 min', value: { min: 0, max: 10 } },
+  { label: '10-30 min', value: { min: 10, max: 30 } },
+  { label: '30-60 min', value: { min: 30, max: 60 } },
+  { label: '1 hour+', value: { min: 60, max: Infinity } },
+] as const;
 
-export const DeliveryTimes = ({ restaurants }: DeliveryTimesProps) => {
-  const mappedDeliveryTimes = [
-    { name: '0-10', value: { min: 0, max: 10 } },
-    { name: '10-30', value: { min: 10, max: 30 } },
-    { name: '30-60', value: { min: 30, max: 60 } },
-    { name: '60+', value: { min: 60, max: Infinity } },
-  ];
+export const DeliveryTimes = () => {
+  const { selectedFilters, setSelectedFilters } = useFilterContext();
+
+  const handleDeliverTimeSelection = (obj: { min: number; max: number }) => {
+    setSelectedFilters((prevFilters) => {
+      const isDeliveryTimeSelected =
+        prevFilters.delivery_time_minutes &&
+        prevFilters.delivery_time_minutes.min === obj.min &&
+        prevFilters.delivery_time_minutes.max === obj.max;
+
+      return {
+        ...prevFilters,
+        delivery_time_minutes: isDeliveryTimeSelected ? null : obj,
+      };
+    });
+  };
 
   return (
     <div className='flex flex-col gap-4'>
       <h4 className='text-body uppercase text-black/40 font-semibold'>
         Delivery Time
       </h4>
-      <div className='flex flex-col gap-2.5'>
-        {/* {filters.map((filter) => (
+      <div className='flex flex-wrap gap-2.5'>
+        {DELIVERY_TIMES.map((time) => (
           <FilterButton
-            key={filter.id}
-            filterId={filter.id}
-            label={filter.name}
-            isActive={selectedFilters.filter_ids.includes(filter.id)}
-            handleClick={() => handleSelectedFilters(filter.id)}
+            key={time.label}
+            filterId={time.value}
+            label={time.label}
+            isActive={selectedFilters.delivery_time_minutes === time.value}
+            handleClick={() => handleDeliverTimeSelection(time.value)}
           />
-        ))} */}
+        ))}
       </div>
     </div>
   );

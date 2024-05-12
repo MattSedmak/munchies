@@ -22,8 +22,8 @@ export const TopBar = ({ filters }: TopBarProps) => {
   };
 
   return (
-    <div className='col-start-1 col-span-full mb-6 md:mb-10 overflow-visible'>
-      <div className='flex gap-2.5 overflow-x-auto overflow-y-clip'>
+    <div className='col-start-1 col-span-full mb-6 md:mb-10 overflow-scroll hide-scrollbar'>
+      <div className='flex gap-2.5 overflow-x-visible overflow-y-clip'>
         {filters.map((cat) => (
           <button
             key={cat.id}
@@ -39,6 +39,7 @@ export const TopBar = ({ filters }: TopBarProps) => {
               alt={cat.name}
               width={80}
               height={80}
+              priority={true}
               className='absolute top-0 right-0 aspect-square'
             />
           </button>

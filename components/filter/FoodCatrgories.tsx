@@ -19,6 +19,7 @@ export const FoodCategories = ({ filters }: FoodProps) => {
       return { ...prevFilters, filter_ids: selectedFilterIds };
     });
   };
+
   return (
     <div className='flex flex-col gap-4'>
       <h4 className='text-body uppercase text-black/40 font-semibold'>

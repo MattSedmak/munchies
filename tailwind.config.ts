@@ -7,51 +7,51 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    fontSize: {
-      body: [
-        '0.75rem',
-        {
-          lineHeight: '125%',
-          letterSpacing: '-0.03125rem',
-          fontWeight: '400',
-        },
-      ],
-      title: [
-        '0.875rem',
-        {
-          lineHeight: '125%',
-          letterSpacing: '-0.03125rem',
-          fontWeight: '400',
-        },
-      ],
-      heading: [
-        '1.5rem',
-        {
-          lineHeight: '125%',
-          letterSpacing: '-0.03125rem',
-          fontWeight: '400',
-        },
-      ],
-      'heading-sm': [
-        '1.25rem',
-        {
-          lineHeight: '100%',
-          letterSpacing: '-0.03125rem',
-          fontWeight: '400',
-        },
-      ],
-      display: [
-        '2.5rem',
-        {
-          lineHeight: '125%',
-          letterSpacing: '-0.03125rem',
-          fontWeight: '400',
-        },
-      ],
-    },
     extend: {
       fontFamily: {
         'SF-pro': ['var(--SF-pro)'],
+      },
+      fontSize: {
+        body: [
+          '0.75rem',
+          {
+            lineHeight: '125%',
+            letterSpacing: '-0.03125rem',
+            fontWeight: '400',
+          },
+        ],
+        title: [
+          '0.875rem',
+          {
+            lineHeight: '125%',
+            letterSpacing: '-0.03125rem',
+            fontWeight: '400',
+          },
+        ],
+        heading: [
+          '1.5rem',
+          {
+            lineHeight: '125%',
+            letterSpacing: '-0.03125rem',
+            fontWeight: '400',
+          },
+        ],
+        'heading-sm': [
+          '1.25rem',
+          {
+            lineHeight: '100%',
+            letterSpacing: '-0.03125rem',
+            fontWeight: '400',
+          },
+        ],
+        display: [
+          '2.5rem',
+          {
+            lineHeight: '125%',
+            letterSpacing: '-0.03125rem',
+            fontWeight: '400',
+          },
+        ],
       },
       colors: {
         'off-white': '#FAFAFA',
