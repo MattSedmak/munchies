@@ -28,7 +28,6 @@ export const RestaurantCard = ({ restaurant, isOpen }: RestaurantCardProps) => {
           label={isOpen ? 'open' : 'closed'}
           circle={{ show: true, color: isOpen ? 'green' : 'black' }}
         />
-        {/* {isOpen && <Badge label='10 min' circle={{ show: false }} />} */}
       </div>
       {!isOpen && (
         <p className='w-fit border border-stroke text-body bg-off-white rounded py-2 px-3 self-center'>

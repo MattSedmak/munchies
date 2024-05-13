@@ -13,7 +13,7 @@ const DELIVERY_TIMES = [
 export const DeliveryTimes = () => {
   const { selectedFilters, setSelectedFilters } = useFilterContext();
 
-  const handleDeliverTimeSelection = (obj: { min: number; max: number }) => {
+  const handleDeliveryTimeSelection = (obj: { min: number; max: number }) => {
     setSelectedFilters((prevFilters) => {
       const isDeliveryTimeSelected =
         prevFilters.delivery_time_minutes &&
@@ -39,7 +39,7 @@ export const DeliveryTimes = () => {
             filterId={time.value}
             label={time.label}
             isActive={selectedFilters.delivery_time_minutes === time.value}
-            handleClick={() => handleDeliverTimeSelection(time.value)}
+            handleClick={() => handleDeliveryTimeSelection(time.value)}
           />
         ))}
       </div>

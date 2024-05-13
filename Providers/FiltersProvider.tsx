@@ -6,7 +6,7 @@ type DeliveryTimeMinutes = {
   max: number;
 } | null;
 
-interface SelectedFilters {
+interface SelectedFiltersShape {
   filter_ids: string[];
   price_range_id: string | null;
   delivery_time_minutes: DeliveryTimeMinutes;
@@ -18,7 +18,7 @@ interface FilterContextType {
     price_range_id: string | null;
     delivery_time_minutes: DeliveryTimeMinutes;
   };
-  setSelectedFilters: React.Dispatch<React.SetStateAction<SelectedFilters>>;
+  setSelectedFilters: React.Dispatch<React.SetStateAction<SelectedFiltersShape>>;
 }
 
 interface FilterProviderProps {
@@ -41,7 +41,7 @@ export const useFilterContext = () => useContext(FilterContext);
 
 // Provider component
 export const FilterProvider = ({ children }: FilterProviderProps) => {
-  const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({
+  const [selectedFilters, setSelectedFilters] = useState<SelectedFiltersShape>({
     filter_ids: [],
     price_range_id: null,
     delivery_time_minutes: null,

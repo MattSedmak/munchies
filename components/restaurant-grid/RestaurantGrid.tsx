@@ -11,7 +11,6 @@ interface RestaurantGridProps {
 export const RestaurantGrid = ({ restaurants }: RestaurantGridProps) => {
   const { selectedFilters } = useFilterContext();
 
-  // Check if a restaurant matches the selected filters
   const restaurantMatchesFilters = (restaurant: Restaurant) => {
     const { filter_ids, price_range_id, delivery_time_minutes } = selectedFilters;
     // If no filters are selected, all restaurants match

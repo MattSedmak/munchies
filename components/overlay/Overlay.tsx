@@ -7,7 +7,7 @@ export const Overlay = () => {
 
   return (
     <div
-      className={`flex flex-col justify-between sm:hidden absolute inset-x-0 top-0 px-6 pb-10 h-screen bg-brand-green z-20 transition-opactiy duration-300 ease-out ${
+      className={`flex flex-col justify-between sm:hidden fixed inset-x-0 top-0 px-6 pb-10 h-dvh bg-brand-green z-20 transition-opactiy duration-300 ease-out ${
         show ? 'visible opacity-100' : 'invisible opacity-0'
       }`}
     >

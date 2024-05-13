@@ -36,7 +36,6 @@ export default async function Home() {
         </div>
         <div className='grid grid-cols-subgrid col-span-4 md:col-span-13'>
           <TopBar filters={categories.filters} />
-
           <RestaurantGrid restaurants={restaurants} />
         </div>
       </section>
